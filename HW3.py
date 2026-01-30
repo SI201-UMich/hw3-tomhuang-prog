@@ -1,6 +1,6 @@
-# Name:
-# Student ID:
-# Email:
+# Name: Haoxiang Huang  
+# Student ID:68857185
+# Email: tomhuang@umich.edu
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
@@ -33,7 +33,14 @@ class CouponDispenser:
             coupon_cards (list[str]): list of possible coupons users can receive.
         """
         # TODO: Implement per instructions
-        pass
+
+        self.coupon_cards = coupon_cards
+        self.customer_roster = customer_roster
+        customer_roster = []
+        issued_indices = []
+        issued_indices[0] == customer_roster[0] 
+
+        # pass
 
     def __str__(self):
         """
@@ -44,7 +51,12 @@ class CouponDispenser:
             str
         """
         # TODO: Implement per instructions
-        pass
+
+        if len(self.coupon_cards) == 0:
+            return ""
+        return self.coupon_cards.join("|")
+
+        # pass
 
     def issue_coupon(self, name):
         """
@@ -61,7 +73,19 @@ class CouponDispenser:
             str: message as described above
         """
         # TODO: Implement per instructions
-        pass
+
+        self.name = name
+
+        if len(name) == 0:
+            return "The box is empty"
+        for i in self.customer_roster:
+            if name is  self.customer_roster:
+                self.customer_roster 
+            return 
+
+        return 
+
+        # pass
 
     def distribute_session(self):
         """
@@ -79,7 +103,10 @@ class CouponDispenser:
         Reminder: Use lists only (no dictionaries).
         """
         # TODO: Implement per instructions 
-        pass
+        
+        
+        
+        # pass
 
     def tally_distribution(self):
         """
