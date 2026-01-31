@@ -6,7 +6,7 @@
 # e.g.:
 # Asked ChatGPT hints for debugging and suggesting the general structure of the code
 # Did your use of GenAI on this assignment align with your goals and guidelines in 
-#    your Gen AI contract? If not, why?
+#    your Gen AI contract? If not, why?  I ran into the issue of not being able to use terminal and getting stuck on output, so I used Claude to help me figure out how to debug it. The amount of total tests kept changing so I confirmed with Claude if my VS Code was glitching. Finally, I had a lot of syntax errors such as using .join() wrong and used the same variable names for the methods which confused me, I asked ai to also help me debug these issues. 
 
 import random
 import io
@@ -465,6 +465,5 @@ def test():
 
 
 if __name__ == "__main__":
-    # main()
+    main()
     test()
-
