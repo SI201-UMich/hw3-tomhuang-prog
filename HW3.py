@@ -34,11 +34,9 @@ class CouponDispenser:
         """
         # TODO: Implement per instructions
 
+        self.customer_roster = []
+        self.issued_indices = []
         self.coupon_cards = coupon_cards
-        self.customer_roster = customer_roster
-        customer_roster = []
-        issued_indices = []
-        issued_indices[0] == customer_roster[0] 
 
         # pass
 
@@ -54,7 +52,7 @@ class CouponDispenser:
 
         if len(self.coupon_cards) == 0:
             return ""
-        return self.coupon_cards.join("|")
+        return "|".join(self.coupon_cards)
 
         # pass
 
@@ -74,17 +72,23 @@ class CouponDispenser:
         """
         # TODO: Implement per instructions
 
-        self.name = name
+        coupon_index = 0
 
-        if len(name) == 0:
-            return "The box is empty"
-        for i in self.customer_roster:
-            if name is  self.customer_roster:
-                self.customer_roster 
-            return 
+        if len(self.coupon_cards) == 0:
+            return "The box is empty."
+        
+        random_index = random.choice(range(len(self.coupon_cards)))
+        
+        for i in range(0, len(self.customer_roster)):
+            if self.customer_roster[i] == name:
+                coupon_index = i
+                return f"That name already has a coupon: {self.coupon_cards[self.issued_indices[coupon_index]]}"
 
-        return 
-
+        if name not in self.customer_roster:
+            self.customer_roster.append(name)
+            self.issued_indices.append(random_index)
+            return self.coupon_cards[random_index]
+        
         # pass
 
     def distribute_session(self):
@@ -103,8 +107,31 @@ class CouponDispenser:
         Reminder: Use lists only (no dictionaries).
         """
         # TODO: Implement per instructions 
-        
-        
+
+        round_number = 0
+        while True:
+            round_number += 1
+            user_input = input(f"Round {round_number} - Enter a name (or a comma-separated list), or type 'show' or 'exit': ")
+            if user_input == "exit":
+                print("Goodbye!")
+                break
+            elif user_input == "show":
+                for i in range(0, len(self.customer_roster)):
+                    name_id = self.customer_roster[i]
+                    coupon_id = self.issued_indices[i]
+                    coupon_txt = self.coupon_cards[coupon_id]
+                    print(f"{name_id}: {coupon_txt}")
+            elif len(user_input) == 0:
+                continue
+            else:
+                user_list = user_input.split(",")
+                for i in user_list:
+                    stripped_names = i.strip()
+                    if len(stripped_names) > 0:
+                        stripped_result = self.issue_coupon(stripped_names)
+                        print(stripped_result)
+                    else:
+                        continue
         
         # pass
 
@@ -124,7 +151,20 @@ class CouponDispenser:
             None
         """
         # TODO: Implement per instructions
-        pass
+
+        if len(self.issued_indices) == 0:
+            print("Empty")
+            return 
+        else:
+            for coupon_id in range(len(self.coupon_cards)):
+                id_count = 0
+                for issue_id in self.issued_indices:
+                    if issue_id == coupon_id:
+                        id_count += 1
+                coupon_name = self.coupon_cards[coupon_id]
+                print(f"{coupon_name} distribution count: {id_count}.")
+
+        # pass
 
 
 def main():
@@ -143,10 +183,10 @@ def main():
     ]
 
     # Uncomment the lines below as you implement each function.
-    # box = CouponDispenser(coupon_cards)
-    # box.distribute_session()
-    # box.tally_distribution()
-    pass
+    box = CouponDispenser(coupon_cards)
+    box.distribute_session()
+    box.tally_distribution()
+    # pass
 
 
 # -----------------------
@@ -425,6 +465,6 @@ def test():
 
 
 if __name__ == "__main__":
-    main()
-    # test()
+    # main()
+    test()
 
